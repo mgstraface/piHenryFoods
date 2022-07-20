@@ -45,7 +45,6 @@ function getRecipes(req, res, next) {
 
 async function createRecipe(req, res) {
 	const { title, summary, healthScore, analizedInstructions, diets, image } = req.body;
-	getDiets()
 	if(!title || !summary) return 'MISSING TITLE OR DESCRIPTION'
 	try {
 		let createdRecipe = await Recipe.create({
