@@ -34,12 +34,6 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-
-      recipeScore: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-      },
-
       image: {
         type: DataTypes.STRING,
         allowNull: true,
