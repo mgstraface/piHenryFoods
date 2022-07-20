@@ -24,16 +24,15 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
 
-      healtScore: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      healthScore: {
+        type: DataTypes.STRING,
       },
 
       analyzedInstructions: {
         //paso a paso
         type: DataTypes.TEXT,
-        allowNull: true,
       },
+
       image: {
         type: DataTypes.STRING,
         allowNull: true,

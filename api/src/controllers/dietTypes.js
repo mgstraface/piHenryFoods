@@ -40,11 +40,11 @@ async function getDiets(req, res, next) {
 	
     try {
         let dietSearch = await DietTypes.findAll()
-			if (dietSearch > 0) {
-				return res.json(dietSearch).status(200);
+			if (dietSearch.length > 0) {
+				return res.status(200).json(dietSearch);
 			} else {
-				let dietCreate = await DietTypes.bulkCreate(diets)
-						return res.json(dietCreate).status(200);
+				let dietCreate =  await DietTypes.bulkCreate(diets)
+						return res.status(200).json(dietCreate);
             }
     } catch (error) {
         next(error)

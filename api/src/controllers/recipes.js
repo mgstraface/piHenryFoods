@@ -44,7 +44,7 @@ function getRecipes(req, res, next) {
 };
 
 async function createRecipe(req, res) {
-	const { title, summary, healthScore, analizedInstructions, diets, image } = req.body;
+	const { title, summary, healthScore, analyzedInstructions, diets, image } = req.body;
 	if(!title || !summary) return 'MISSING TITLE OR DESCRIPTION'
 	try {
 		let createdRecipe = await Recipe.create({
@@ -52,7 +52,7 @@ async function createRecipe(req, res) {
 			image: image || '', 
 			summary: summary,
 			healthScore: healthScore,
-			analizedInstructions: analizedInstructions || '',
+			analyzedInstructions: analyzedInstructions || '',
 			createdInDb: true
 		})
 			let dietInDb = await DietTypes.findAll({
@@ -71,11 +71,37 @@ async function createRecipe(req, res) {
 	}
 }
 
+function getRecipeById(req, res, next) {
+	const id = req.params.idReceta;
+	if (id.includes('-')) {
+		Recipe.findByPk(id, { include: DietTypes }).then((response) => {
+			return res.json(response);
+		});
+	} else {
+		axios
+			.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`)
+			.then((response) => {
+				return res.json({
+					title: response.data.title,
+					image: response.data.image,
+					dishTypes: response.data.dishTypes,
+					diets: response.data.diets,
+					summary: response.data.summary,
+					healthScore: response.data.healthScore,
+					analyzedInstructions: response.data.analyzedInstructions,
+				});
+			})
+			.catch((error) => next(error));
+	}
+}
+
+
+
 
 
 
 module.exports = {
     getRecipes,
 	createRecipe,
-
+	getRecipeById
 }
