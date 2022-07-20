@@ -2,7 +2,6 @@ require("dotenv").config();
 const axios = require('axios');
 const { apiKey }  = process.env;
 const { Recipe, DietTypes } = require('../db.js');
-const { getDiets } = require('./dietTypes.js')
 
 
 function getRecipes(req, res, next) {
@@ -18,13 +17,14 @@ function getRecipes(req, res, next) {
 				apiRecipes = apiResponse.data.results.filter((recipe) => {
 					return recipe.title.toLowerCase().includes(nameQuery.toLowerCase());
 				});
-				return Recipe.findAll({ include: [DietTypes] });
+					return Recipe.findAll({ include: [DietTypes] });
 			})
 			.then((dbResponse) => {
 				dbRecipes = dbResponse.filter((recipe) => {
 					return recipe.title.toLowerCase().includes(nameQuery.toLowerCase());
 				});
-				return res.status(200).json(
+				if(!apiRecipes.length && !dbRecipes.length) return res.status(404).send('recipe not found');
+					return res.status(200).json(
 					[...dbRecipes, ...apiRecipes].slice(0, 9)
 				);
 			})
@@ -45,7 +45,8 @@ function getRecipes(req, res, next) {
 
 async function createRecipe(req, res) {
 	const { title, summary, healthScore, analyzedInstructions, diets, image } = req.body;
-	if(!title || !summary) return 'MISSING TITLE OR DESCRIPTION'
+	if(!title || !summary || !diets) return res.status(404).send('MISSING TITLE, DIETS OR SUMMARY');
+
 	try {
 		let createdRecipe = await Recipe.create({
 			title: title,
