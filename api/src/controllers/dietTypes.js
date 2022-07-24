@@ -1,49 +1,53 @@
-const { DietTypes } = require('../db.js');
+const { Diets } = require('../db.js');
 
 let diets = [
 	{
-		name: 'Gluten Free',
+		name: 'dairy free',
+	},
+
+	{
+		name: 'gluten free',
 	},
 	{
-		name: 'Ketogenic',
+		name: 'ketogenic',
 	},
 	{
-		name: 'Vegetarian',
+		name: 'vegetarian',
 	},
 	{
-		name: 'Lacto-Vegetarian',
+		name: 'lacto-vegetarian',
 	},
 	{
-		name: 'Ovo-Vegetarian',
+		name: 'ovo-vegetarian',
 	},
 	{
-		name: 'Vegan',
+		name: 'vegan',
 	},
 	{
-		name: 'Pescetarian',
+		name: 'pescetarian',
 	},
 	{
-		name: 'Paleo',
+		name: 'paleo',
 	},
 	{
-		name: 'Primal',
+		name: 'primal',
 	},
 	{
-		name: 'Low FODMAP'
+		name: 'low FODMAP'
 	},
 	{
-		name: 'Whole30',
+		name: 'whole 30',
 	},
 ];
 
 async function getDiets(req, res, next) {
 	
     try {
-        let dietSearch = await DietTypes.findAll()
+        let dietSearch = await Diets.findAll()
 			if (dietSearch.length > 0) {
 				return res.status(200).json(dietSearch);
 			} else {
-				let dietCreate =  await DietTypes.bulkCreate(diets)
+				let dietCreate =  await Diets.bulkCreate(diets)
 						return res.status(200).json(dietCreate);
             }
     } catch (error) {

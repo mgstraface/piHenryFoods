@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require('axios');
 const { apiKey }  = process.env;
-const { Recipe, DietTypes } = require('../db.js');
+const { Recipe, Diets } = require('../db.js');
 
 
 function getRecipes(req, res, next) {
@@ -17,7 +17,7 @@ function getRecipes(req, res, next) {
 				apiRecipes = apiResponse.data.results.filter((recipe) => {
 					return recipe.title.toLowerCase().includes(nameQuery.toLowerCase());
 				});
-					return Recipe.findAll({ include: [DietTypes] });
+					return Recipe.findAll({ include: [Diets] });
 			})
 			.then((dbResponse) => {
 				dbRecipes = dbResponse.filter((recipe) => {
@@ -25,7 +25,7 @@ function getRecipes(req, res, next) {
 				});
 				if(!apiRecipes.length && !dbRecipes.length) return res.status(404).send('recipe not found');
 					return res.status(200).json(
-					[...dbRecipes, ...apiRecipes].slice(0, 9)
+					[...dbRecipes, ...apiRecipes]//.slice(0, 9);
 				);
 			})
 			.catch((error) => next(error));
@@ -34,7 +34,7 @@ function getRecipes(req, res, next) {
 			.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`)
 			.then((apiResponse) => {
 				apiRecipes = apiResponse.data.results;
-				return Recipe.findAll({ include: [DietTypes] });
+				return Recipe.findAll({ include: [Diets] });
 			})
 			.then((dbResponse) => {
 				return res.status(200).json([...dbResponse, ...apiRecipes]);
@@ -56,13 +56,13 @@ async function createRecipe(req, res) {
 			analyzedInstructions: analyzedInstructions || '',
 			createdInDb: true
 		})
-			let dietInDb = await DietTypes.findAll({
+			let dietInDb = await Diets.findAll({
 				where: {
 					name: diets
 				},
 			});
 
-			createdRecipe.addDietTypes(dietInDb)
+			createdRecipe.addDiets(dietInDb)
 
 				return res.status(201).json({
 					message: 'Recipe created successfully',
@@ -75,7 +75,7 @@ async function createRecipe(req, res) {
 function getRecipeById(req, res, next) {
 	const id = req.params.idReceta;
 	if (id.includes('-')) {
-		Recipe.findByPk(id, { include: DietTypes }).then((response) => {
+		Recipe.findByPk(id, { include: Diets }).then((response) => {
 			return res.json(response);
 		});
 	} else {

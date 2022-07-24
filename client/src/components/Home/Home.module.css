@@ -1,0 +1,19 @@
+.HomeBg{
+    background-image: url('../../images/bg.jpg');
+    background-repeat:repeat;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    background-position-x: center;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

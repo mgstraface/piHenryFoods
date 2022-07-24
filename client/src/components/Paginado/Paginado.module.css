@@ -1,0 +1,24 @@
+.paginado ul{
+    list-style-type: none; /*hace que no haya marcas al lado de los items*/
+    text-align: center;
+}
+
+.paginado li{
+    display: inline;  /*coloca los botones uno al lado del otro*/
+    text-align: center; /*centra los items*/
+    margin: 0 10px 0 0; /*deja un espacio entre los items*/
+}
+
+.paginado li button{
+    padding: 2px 7px 2px 7px;
+    color: #666;
+    background-color: #eeeeee;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.paginado li button:hover{
+    background-color: #333333;
+    color: #ffffff;
+}

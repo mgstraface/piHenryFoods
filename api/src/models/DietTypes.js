@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
 sequelize.define(
-    "dietTypes",
+    "diets",
     {
     id: {
         type: DataTypes.UUID,
@@ -12,17 +12,18 @@ sequelize.define(
 
     name: {
         type: DataTypes.ENUM(
-        "Gluten Free",
-        "Ketogenic",
-        "Vegetarian",
-        "Lacto-Vegetarian",
-        "Ovo-Vegetarian",
-        "Vegan",
-        "Pescetarian",
-        "Paleo",
-        "Primal",
-        "Low FODMAP",
-        "Whole30"
+        "dairy free",
+        "gluten free",
+        "ketogenic",
+        "vegetarian",
+        "lacto-vegetarian",
+        "ovo-vegetarian",
+        "vegan",
+        "pescetarian",
+        "paleo",
+        "primal",
+        "low FODMAP",
+        "whole 30"
         ),
     },
     },
