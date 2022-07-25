@@ -27,7 +27,7 @@ export default function Card({ title, image, diets }) {
         <img src = {image} alt='img not found' width='150px' height='150px'/>
         <div>
             <h3>Diet types</h3>
-        <ul>
+        <ul className={styles.ul}>
         {finalDiets.map((el) => {
             return <li>{el}</li>;
         })} 

@@ -1,19 +1,44 @@
-.HomeBg{
-    background-image: url('../../images/bg.jpg');
-    background-repeat:repeat;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
-    background-position-x: center;
+.HomeBg {
+  background-image: url("../../images/bg.jpg");
+  background-repeat: repeat;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  background-position-x: center;
+  height: 100%;
 }
 
-.container{
-    width: 100%;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+h1 {
+  color: antiquewhite;
+}
+
+select {
+  background-color: rgb(198, 198, 198);
+  text-align: center;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+select:hover {
+  background-color: rgb(14, 25, 3);
+  color: antiquewhite;
+}
+button {
+  background-color: rgb(198, 198, 198);
+  border-radius: 20px;
+  transition: 0.5s;
+}
+button:hover {
+  background-color: rgb(14, 25, 3);
+  color: antiquewhite;
 }

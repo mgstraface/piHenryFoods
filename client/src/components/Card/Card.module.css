@@ -10,6 +10,7 @@
     width: 350px;
     height: 370px;
     position: relative;
+    margin-bottom: 15px;
 
 }
 
@@ -19,7 +20,12 @@
 
 .card ul{
     list-style-type: none; /*hace que no haya marcas al lado de los items*/
-    text-align:start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 100px;
+
 }
 
 .card div h3{
