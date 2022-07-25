@@ -9,6 +9,9 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
+
+  //----------------------------------------------PAGINADO---------------------------------------------------------------
+
   const allRecipes = useSelector((state) => state.recipes);
   const [currentPage, setCurrentPage] = useState(1); // defino estado local para el paginado
   const recipesPerPage = 9; // defino cantidad de recetas por pagina
@@ -23,7 +26,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    //traigo las recetas
+    //despacho la funcion que trae las dietas, con el array vacio indico que solo lo haga la 1ra vez que se renderiza el componente
     dispatch(getRecipes());
   }, []);
 
