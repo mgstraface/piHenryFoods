@@ -1,0 +1,62 @@
+.formBG {
+  background-color: rgba(0, 0, 0, 0.695);
+  height: 700px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.formBG img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  margin: 0%;
+}
+
+.Form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+::placeholder {
+  font-size: 20px;
+}
+.Form input {
+  margin: 5px 5px;
+  width: 450px;
+  height: 50px;
+  max-width: 450px;
+  text-align: center;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.dietSelect {
+  margin: 5px 5px;
+  width: 450px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.buttonForm {
+  width: 90px;
+  height: 35px;
+  font-size: 15px;
+}
+
+.dietTypes {
+  color: antiquewhite;
+  list-style-type: none;
+}

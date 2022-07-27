@@ -11,10 +11,15 @@
   height: 370px;
   position: relative;
   margin-bottom: 20px;
+  overflow: hidden;
+  transition: 0.5s;
 }
 
 .card img {
   text-align: center;
+  border-radius: 10px;
+  object-fit: cover;
+  width: 348px;
 }
 
 .card ul {
@@ -43,4 +48,9 @@
   margin-right: 0;
   margin-left: 0;
   text-align: center;
+}
+
+.card:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }

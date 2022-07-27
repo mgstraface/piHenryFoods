@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import styles from "./Home.module.css";
+import SearchBar from "../SearchBar/SearchBar";
+import Logo from "../../images/LogoHF.png";
+import NavBar from "../NavBar/NavBar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -59,75 +62,80 @@ export default function Home() {
   }
   // ----------------------------------------------HOME------------------------------------------------------------//
   return (
-    <div className={styles.HomeBg}>
-      <Link to='/recipe'>Create recipe</Link>
-      <h1>The best recipes </h1>
-
+    <div>
+      <NavBar />
+      {/* <div className={styles.HomeBg}> */}
       <div>
-        <button
-          onClick={(e) => {
-            handleClick(e);
-          }}
-        >
-          Refresh recipes
-        </button>
-        <select onChange={(e) => handleOrderByTitle(e)}>
-          <option value='' hidden>
-            Order by title
-          </option>
-          <option value='asc'> Asc (A-Z) </option>
-          <option value='desc'> Desc (Z-A) </option>
-        </select>
+        <Link to='/recipe'>Create recipe</Link>
+        <h1>The best recipes </h1>
 
-        <select onChange={(e) => handleOrderByHealthScore(e)}>
-          <option value='' hidden>
-            Order by health score
-          </option>
-          <option value='ascScore'> Healthier </option>
-          <option value='descScore'> Less healthy </option>
-        </select>
+        <div>
+          <button
+            onClick={(e) => {
+              handleClick(e);
+            }}
+          >
+            Refresh recipes
+          </button>
+          <select onChange={(e) => handleOrderByTitle(e)}>
+            <option value='' hidden>
+              Order by title
+            </option>
+            <option value='asc'> Asc (A-Z) </option>
+            <option value='desc'> Desc (Z-A) </option>
+          </select>
 
-        <select onChange={(e) => handleFilterDiet(e)}>
-          <option value='' hidden>
-            Filter by diet types
-          </option>
-          <option value='all'> All recipes </option>
-          <option value='dairy free'> Dairy Free </option>
-          <option value='gluten free'> Gluten Free </option>
-          <option value='ketogenic'> Ketogenic </option>
-          <option value='vegetarian'> Vegetarian </option>
-          <option value='ovo vegetarian'> Ovo-Vegetarian </option>
-          <option value='lacto vegetarian'> Lacto-Vegetarian </option>
-          <option value='lacto ovo vegetarian'> Lacto-Ovo-Vegetarian </option>
-          <option value='vegan'> Vegan </option>
-          <option value='pescatarian'> Pescetarian </option>
-          <option value='paleolithic'> Paleo </option>
-          <option value='primal'> Primal </option>
-          <option value='low FODMAP'> low FODMAP </option>
-          <option value='fodmap friendly'> Fodmap Friendly </option>
-          <option value='whole30'>Whole 30</option>
-        </select>
+          <select onChange={(e) => handleOrderByHealthScore(e)}>
+            <option value='' hidden>
+              Order by health score
+            </option>
+            <option value='ascScore'> Healthier </option>
+            <option value='descScore'> Less healthy </option>
+          </select>
 
-        <Paginado //se coloca el paginado arriba y abajo para no tener que subir para cambiar
-          recipesPerPage={recipesPerPage}
-          allRecipes={allRecipes.length}
-          paginado={paginado}
-        />
+          <select onChange={(e) => handleFilterDiet(e)}>
+            <option value='' hidden>
+              Filter by diet types
+            </option>
+            <option value='all'> All recipes </option>
+            <option value='dairy free'> Dairy Free </option>
+            <option value='gluten free'> Gluten Free </option>
+            <option value='ketogenic'> Ketogenic </option>
+            <option value='vegetarian'> Vegetarian </option>
+            <option value='ovo vegetarian'> Ovo-Vegetarian </option>
+            <option value='lacto vegetarian'> Lacto-Vegetarian </option>
+            <option value='lacto ovo vegetarian'> Lacto-Ovo-Vegetarian </option>
+            <option value='vegan'> Vegan </option>
+            <option value='pescatarian'> Pescetarian </option>
+            <option value='paleolithic'> Paleo </option>
+            <option value='primal'> Primal </option>
+            <option value='low FODMAP'> low FODMAP </option>
+            <option value='fodmap friendly'> Fodmap Friendly </option>
+            <option value='whole30'>Whole 30</option>
+          </select>
 
-        {/* por cada receta en current, retorno una card, pasandole los parametros correspondientes */}
-        <div className={styles.container}>
-          {currentRecipes &&
-            currentRecipes.map((el) => {
-              return <Card title={el.title} image={el.image} diets={el.diets}></Card>;
-            })}
+          <Paginado //se coloca el paginado arriba y abajo para no tener que subir para cambiar
+            recipesPerPage={recipesPerPage}
+            allRecipes={allRecipes.length}
+            paginado={paginado}
+          />
+
+          {/* por cada receta en current, retorno una card, pasandole los parametros correspondientes */}
+          <div className={styles.container}>
+            {currentRecipes &&
+              currentRecipes.map((el) => {
+                return <Card title={el.title} image={el.image} diets={el.diets}></Card>;
+              })}
+          </div>
+
+          <Paginado
+            recipesPerPage={recipesPerPage}
+            allRecipes={allRecipes.length}
+            paginado={paginado}
+          />
         </div>
-
-        <Paginado
-          recipesPerPage={recipesPerPage}
-          allRecipes={allRecipes.length}
-          paginado={paginado}
-        />
       </div>
+      {/* </div> */}
     </div>
   );
 }
