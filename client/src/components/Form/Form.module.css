@@ -1,10 +1,10 @@
 .formBG {
-  background-color: rgba(0, 0, 0, 0.695);
-  height: 700px;
+  background-color: rgba(4, 14, 2, 0.883);
+  height: 900px;
   width: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   margin: 0 auto;
 }
@@ -34,6 +34,7 @@
   text-align: center;
   font-size: 12px;
   box-sizing: border-box;
+  justify-content: center;
 }
 
 .dietSelect {
@@ -45,6 +46,7 @@
 }
 
 .buttonContainer {
+  margin-top: 25px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -59,4 +61,37 @@
 .dietTypes {
   color: antiquewhite;
   list-style-type: none;
+}
+
+.dietCONT {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: space-around;
+  margin: 30px 30px;
+}
+
+.divDiets {
+  color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.errors {
+  background-color: brown;
+  color: aliceblue;
+}
+
+.btnX {
+  background-color: brown;
+  color: aliceblue;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }

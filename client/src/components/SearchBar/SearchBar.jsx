@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getRecipesByName } from "../../actions";
 import styles from "./SearchBar.module.css";
 
-export default function SearchBar() {
+export default function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
@@ -17,6 +17,7 @@ export default function SearchBar() {
     e.preventDefault();
     dispatch(getRecipesByName(name));
     setName("");
+    setCurrentPage(1);
   }
 
   return (

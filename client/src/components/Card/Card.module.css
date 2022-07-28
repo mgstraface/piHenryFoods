@@ -51,6 +51,6 @@
 }
 
 .card:hover {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.9);
 }

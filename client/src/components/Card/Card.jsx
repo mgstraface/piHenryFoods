@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 
 export default function Card({ title, image, diets }) {
@@ -13,7 +14,10 @@ export default function Card({ title, image, diets }) {
     }
     return arrDiets;
   };
-
+  if (!image) {
+    image =
+      "https://img.freepik.com/premium-vector/fast-food-cartoon-color-illustration_7243-196.jpg?w=740";
+  }
   const finalDiets = getDiets();
 
   //en cada card retorno su title, img y mapeo el arreglo de dietas devolviendo un 'li' por cada una

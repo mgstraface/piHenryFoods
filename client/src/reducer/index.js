@@ -6,6 +6,7 @@ import {
   GET_RECIPES_BY_NAME,
   POST_RECIPE,
   GET_DIETS,
+  GET_DETAILS,
 } from "../actions";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   recipes: [],
   allRecipes: [],
   diets: [],
+  detail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -104,6 +106,12 @@ function rootReducer(state = initialState, action) {
     case POST_RECIPE:
       return {
         ...state,
+      };
+
+    case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload,
       };
 
     default:

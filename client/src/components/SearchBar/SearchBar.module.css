@@ -1,10 +1,18 @@
 .SearchBar {
   background-color: rgba(255, 255, 255, 0.421);
-  width: 200px;
-  height: 25px;
+  width: 400px;
+  height: 50px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-::placeholder {
-  font-size: 12px;
+input {
+  width: 250px;
+  height: 45px;
+}
+
+.SearchBar ::placeholder {
+  font-size: 11px;
 }

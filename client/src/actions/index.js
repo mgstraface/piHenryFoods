@@ -10,6 +10,7 @@ export const ORDER_BY_HEALTHSCORE = "ORDER_BY_HEALTHSCORE";
 export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
 export const GET_DIETS = "GET_DIETS";
 export const POST_RECIPE = "POST_RECIPE";
+export const GET_DETAILS = "GET_DETAILS";
 
 //--------------------------------------------ACTIONS-----------------------------------------------------
 
@@ -80,5 +81,19 @@ export function orderByHealthScore(payload) {
   return {
     type: ORDER_BY_HEALTHSCORE,
     payload,
+  };
+}
+
+export function getRecipeById(id) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get("http://localhost:3001/recipes/" + id);
+      return dispatch({
+        type: GET_DETAILS,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }

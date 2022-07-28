@@ -2,12 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipes, filterRecipeByDiet, orderByTitle, orderByHealthScore } from "../../actions";
-import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import styles from "./Home.module.css";
-import SearchBar from "../SearchBar/SearchBar";
-import Logo from "../../images/LogoHF.png";
 import NavBar from "../NavBar/NavBar";
 
 export default function Home() {
@@ -35,12 +32,6 @@ export default function Home() {
 
   //--------------------------------------------HANDLERS----------------------------------------------------------//
 
-  function handleClick(e) {
-    // defino que el boton refresh cargue nuevamente las recetas
-    e.preventDefault();
-    dispatch(getRecipes());
-  }
-
   function handleFilterDiet(e) {
     // tomo el value del select y lo mando como payload a la action
     dispatch(filterRecipeByDiet(e.target.value));
@@ -63,21 +54,12 @@ export default function Home() {
   // ----------------------------------------------HOME------------------------------------------------------------//
   return (
     <div>
-      <NavBar />
-      {/* <div className={styles.HomeBg}> */}
-      <div>
-        <Link to='/recipe'>Create recipe</Link>
-        <h1>The best recipes </h1>
-
-        <div>
-          <button
-            onClick={(e) => {
-              handleClick(e);
-            }}
-          >
-            Refresh recipes
-          </button>
-          <select onChange={(e) => handleOrderByTitle(e)}>
+      <div className={styles.NavBar}>
+        <NavBar setCurrentPage={setCurrentPage} />
+      </div>
+      <div className={styles.cont}>
+        <div className={styles.btnCont}>
+          <select className={styles.selecHome} onChange={(e) => handleOrderByTitle(e)}>
             <option value='' hidden>
               Order by title
             </option>
@@ -85,7 +67,7 @@ export default function Home() {
             <option value='desc'> Desc (Z-A) </option>
           </select>
 
-          <select onChange={(e) => handleOrderByHealthScore(e)}>
+          <select className={styles.selecHome} onChange={(e) => handleOrderByHealthScore(e)}>
             <option value='' hidden>
               Order by health score
             </option>
@@ -93,7 +75,7 @@ export default function Home() {
             <option value='descScore'> Less healthy </option>
           </select>
 
-          <select onChange={(e) => handleFilterDiet(e)}>
+          <select className={styles.selecHome} onChange={(e) => handleFilterDiet(e)}>
             <option value='' hidden>
               Filter by diet types
             </option>
@@ -113,29 +95,34 @@ export default function Home() {
             <option value='fodmap friendly'> Fodmap Friendly </option>
             <option value='whole30'>Whole 30</option>
           </select>
-
+        </div>
+      </div>
+      <div className={styles.totalCont}>
+        <div className={styles.paginado}>
           <Paginado //se coloca el paginado arriba y abajo para no tener que subir para cambiar
             recipesPerPage={recipesPerPage}
             allRecipes={allRecipes.length}
             paginado={paginado}
+            currentPage={currentPage}
           />
+        </div>
 
-          {/* por cada receta en current, retorno una card, pasandole los parametros correspondientes */}
-          <div className={styles.container}>
-            {currentRecipes &&
-              currentRecipes.map((el) => {
-                return <Card title={el.title} image={el.image} diets={el.diets}></Card>;
-              })}
-          </div>
-
+        {/* por cada receta en current, retorno una card, pasandole los parametros correspondientes */}
+        <div className={styles.container}>
+          {currentRecipes &&
+            currentRecipes.map((el) => {
+              return <Card id={el.id} title={el.title} image={el.image} diets={el.diets}></Card>;
+            })}
+        </div>
+        <div className={styles.paginado}>
           <Paginado
             recipesPerPage={recipesPerPage}
             allRecipes={allRecipes.length}
             paginado={paginado}
+            currentPage={currentPage}
           />
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 }
