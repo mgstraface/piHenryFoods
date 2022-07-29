@@ -14,9 +14,19 @@ function validate(input) {
   } else if (!/^[a-zA-Z ]+$/.test(input.title)) {
     errors.title = "Title accept a words and spaces";
   } else if (!/^[\s\S]{3,25}$/.test(input.title)) {
-    errors.title = "the title must contain between 3 and 25 characters";
+    errors.title = "The title must contain between 3 and 25 characters";
+  } else if (
+    !/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/.test(
+      input.image
+    )
+  ) {
+    errors.image = "Enter a valid image URL. 'example: http://example.com'";
   } else if (!input.summary) {
     errors.summary = "Summary or description is required";
+  } else if (!/^[a-zA-Z0-9 ]+$/.test(input.summary)) {
+    errors.summary = "Title accept a words and spaces";
+  } else if (!/^[\s\S]{3,250}$/.test(input.summary)) {
+    errors.summary = "The title must contain between 3 and 250 characters";
   } else if (!/^(?!$)(?:[0-9]{1,2}|100)$/gm.test(input.healthScore)) {
     errors.healthScore = "The Health Score must be between 0 and 100";
   }
@@ -164,7 +174,9 @@ export default function Form() {
                 Diet types
               </option>
               {diets.map((e) => (
-                <option value={e.name}>{e.name}</option>
+                <option key={e.name} value={e.name}>
+                  {e.name}
+                </option>
               ))}
             </select>
             <div></div>

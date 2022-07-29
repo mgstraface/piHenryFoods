@@ -16,7 +16,7 @@ h1 {
   color: antiquewhite;
 }
 
-select {
+.selecHome {
   background-color: rgb(198, 198, 198);
   text-align: center;
   border-radius: 20px;
@@ -24,9 +24,9 @@ select {
   width: 120px;
   height: 25px;
 }
-select:hover {
-  background-color: rgb(14, 25, 3);
-  color: antiquewhite;
+.selecHome:hover {
+  background-color: rgb(61, 61, 61);
+  color: aliceblue;
 }
 button {
   background-color: rgb(198, 198, 198);
@@ -49,25 +49,35 @@ button:hover {
   background-color: rgb(4, 14, 2);
   width: 400px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 37%;
+  margin-left: 36.8%;
   margin-top: -200px;
   padding: 0px 0px;
   position: fixed;
-  border: 3px solid black;
 
   z-index: 1;
 }
 .totalCont {
-  margin-top: 0px;
+  margin-top: -150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cont {
-  margin-top: 265px;
+  margin-top: 500px;
+  margin-bottom: -50px;
 }
 .paginado {
-  margin-left: -27px;
+  margin-left: -45px;
+}
+.SearchBar {
+  position: fixed;
+  z-index: 1;
+  margin-left: 1190px;
+  margin-top: -170px;
 }

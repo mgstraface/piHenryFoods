@@ -6,6 +6,7 @@ import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import styles from "./Home.module.css";
 import NavBar from "../NavBar/NavBar";
+import SearchBar from "../SearchBar/SearchBar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -96,10 +97,14 @@ export default function Home() {
             <option value='whole30'>Whole 30</option>
           </select>
         </div>
+        <div className={styles.SearchBar}>
+          <SearchBar setCurrentPage={setCurrentPage} />
+        </div>
       </div>
       <div className={styles.totalCont}>
         <div className={styles.paginado}>
           <Paginado //se coloca el paginado arriba y abajo para no tener que subir para cambiar
+            key={currentPage}
             recipesPerPage={recipesPerPage}
             allRecipes={allRecipes.length}
             paginado={paginado}
@@ -111,11 +116,21 @@ export default function Home() {
         <div className={styles.container}>
           {currentRecipes &&
             currentRecipes.map((el) => {
-              return <Card id={el.id} title={el.title} image={el.image} diets={el.diets}></Card>;
+              return (
+                <Card
+                  key={el.id}
+                  id={el.id}
+                  title={el.title}
+                  image={el.image}
+                  diets={el.diets}
+                  vegetarian={el.vegetarian}
+                ></Card>
+              );
             })}
         </div>
         <div className={styles.paginado}>
           <Paginado
+            key={currentPage}
             recipesPerPage={recipesPerPage}
             allRecipes={allRecipes.length}
             paginado={paginado}

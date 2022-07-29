@@ -14,7 +14,7 @@ const initialState = {
   recipes: [],
   allRecipes: [],
   diets: [],
-  detail: [],
+  detail: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -28,10 +28,16 @@ function rootReducer(state = initialState, action) {
 
     case FILTER_BY_DIET: //filtro una copia del array allRecipes y busco las que coincidan con el payload
       const allRecipes = state.allRecipes;
+      const allRecipesA = state.allRecipes.filter((e) => !e.vegetarian);
+      const allRecipesB = state.allRecipes.filter((e) => e.vegetarian);
+      allRecipesB.map((e) => e.diets.unshift("vegetarian"));
+      allRecipesB.map((e) => (e.vegetarian = false));
+      const allRecipesC = [...allRecipesA, ...allRecipesB];
+
       const dietFiltered =
         action.payload === "all"
           ? allRecipes
-          : allRecipes.filter((el) =>
+          : allRecipesC.filter((el) =>
               el.diets.find((el) => (el.name ? el.name === action.payload : el === action.payload))
             );
       return {
@@ -70,19 +76,19 @@ function rootReducer(state = initialState, action) {
         action.payload === "ascScore"
           ? state.recipes.sort((a, b) => {
               if (a.healthScore > b.healthScore) {
-                return 1;
+                return -1;
               }
               if (b.healthScore > a.healthScore) {
-                return -1;
+                return 1;
               }
               return 0;
             })
           : state.recipes.sort((a, b) => {
               if (a.healthScore > b.healthScore) {
-                return -1;
+                return 1;
               }
               if (b.healthScore > a.healthScore) {
-                return 1;
+                return -1;
               }
               return 0;
             });

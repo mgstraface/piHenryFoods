@@ -20,9 +20,9 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado, current
             //por cada numero del array retorno un boton que aplique ese numero a la
             return (
               // lista
-              <li>
+              <li key={number}>
                 <button onClick={() => paginado(number)}>
-                  {currentPage === number ? "X" : number}
+                  {currentPage === number ? <b>X</b> : number}
                 </button>
               </li>
             );

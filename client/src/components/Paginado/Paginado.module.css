@@ -12,14 +12,14 @@
 
 .paginado li button {
   padding: 2px 7px 2px 7px;
-  color: #666;
+  color: rgb(0, 0, 0);
   background-color: #eeeeee;
   border: 1px solid #ccc;
   text-decoration: none;
   border-radius: 20px;
 }
 
-.paginado li button:checked {
+.paginado li button:active {
   background-color: #bd0e28;
   color: #ffffff;
 }

@@ -2,14 +2,19 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 
-export default function Card({ title, image, diets }) {
+export default function Card({ id, title, image, diets, vegetarian }) {
   const getDiets = function () {
     const arrDiets = []; //defino un array para pushear las dietas de la api y la db
+
+    if (vegetarian === true) {
+      arrDiets.push("vegetarian");
+    }
     if (diets) {
       for (const diet of diets) {
         typeof diet === "object" ? arrDiets.push(diet.name) : arrDiets.push(diet);
       }
-    } else {
+    }
+    if (!diets) {
       arrDiets.push("Diet type not found");
     }
     return arrDiets;
@@ -25,12 +30,14 @@ export default function Card({ title, image, diets }) {
   return (
     <div className={styles.card}>
       <h3> {title} </h3>
-      <img src={image} alt='img not found' width='150px' height='150px' />
+      <Link to={`/detail/${id}`}>
+        <img src={image} alt='img not found' width='150px' height='150px' />
+      </Link>
       <div>
         <h3>Diet types</h3>
         <ul className={styles.ul}>
           {finalDiets.map((el) => {
-            return <li>{el.charAt(0).toUpperCase() + el.slice(1)}</li>;
+            return <li key={el}>{el.charAt(0).toUpperCase() + el.slice(1)}</li>;
           })}
         </ul>
       </div>

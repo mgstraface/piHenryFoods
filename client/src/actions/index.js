@@ -16,16 +16,13 @@ export const GET_DETAILS = "GET_DETAILS";
 
 export function getRecipes() {
   //en esta primera action, conecto mi BACK con el FRONT, mediante una acción asincrona a mi ruta /recipes.
-  return async function (dispatch) {
-    try {
-      const json = await axios.get("http://localhost:3001/recipes");
-      return dispatch({
+  return (dispatch) => {
+    axios.get("http://localhost:3001/recipes").then((response) => {
+      dispatch({
         type: GET_RECIPES,
-        payload: json.data,
+        payload: response.data,
       });
-    } catch (error) {
-      throw new Error("Recipes not found");
-    }
+    });
   };
 }
 
@@ -38,7 +35,20 @@ export function getRecipesByName(name) {
         payload: json.data,
       });
     } catch (error) {
-      throw new Error("Recipe name not found");
+      throw alert("Recipe name not found");
+    }
+  };
+}
+export function getDetails(id) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get("http://localhost:3001/recipes/" + id);
+      return dispatch({
+        type: GET_DETAILS,
+        payload: json.data,
+      });
+    } catch (error) {
+      throw new Error(error);
     }
   };
 }
@@ -81,19 +91,5 @@ export function orderByHealthScore(payload) {
   return {
     type: ORDER_BY_HEALTHSCORE,
     payload,
-  };
-}
-
-export function getRecipeById(id) {
-  return async function (dispatch) {
-    try {
-      const json = await axios.get("http://localhost:3001/recipes/" + id);
-      return dispatch({
-        type: GET_DETAILS,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
   };
 }

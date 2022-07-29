@@ -1,0 +1,72 @@
+h1 {
+  color: aliceblue;
+}
+
+.imgDetail {
+  text-align: center;
+  border-radius: 10px;
+  object-fit: cover;
+  width: 348px;
+  -webkit-box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+}
+
+.container {
+  border: 2px solid black;
+  height: 1500px;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgba(4, 14, 2, 0.663);
+  margin-left: 330px;
+}
+.summary {
+  color: antiquewhite;
+  margin: 0px 15px;
+}
+.btnDetail {
+  background-color: rgba(0, 0, 0, 0.514);
+  cursor: pointer;
+  text-align: center;
+  border-radius: 50px;
+  transition: 0.5s;
+  border: 1px solid black;
+  transition: 0.2s;
+  height: 190px;
+  width: 190px;
+  box-shadow: 2px;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+.imgBtnDetail {
+  height: 160px;
+  width: 170px;
+  object-fit: cover;
+}
+
+.btnDetail:hover {
+  background-color: rgba(255, 255, 255, 0.13);
+}
+.btnDetail:active {
+  background-color: rgb(61, 61, 61);
+  box-shadow: 0 2px rgb(0, 0, 0);
+  transform: translateY(4px);
+}
+
+h2 {
+  color: aliceblue;
+}
+h3 {
+  color: aliceblue;
+}
+.healthScore {
+  background-color: rgba(0, 0, 0, 0.509);
+  height: 120px;
+  width: 150px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
