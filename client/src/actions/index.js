@@ -11,7 +11,7 @@ export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
 export const GET_DIETS = "GET_DIETS";
 export const POST_RECIPE = "POST_RECIPE";
 export const GET_DETAILS = "GET_DETAILS";
-
+export const RESET_DETAIL = "RESET_DETAILS";
 //--------------------------------------------ACTIONS-----------------------------------------------------
 
 export function getRecipes() {
@@ -90,6 +90,13 @@ export function orderByHealthScore(payload) {
   //el PAYLOAD es el que recibo del SELECT de HOME
   return {
     type: ORDER_BY_HEALTHSCORE,
+    payload,
+  };
+}
+
+export function resetDetail(payload) {
+  return {
+    type: RESET_DETAIL,
     payload,
   };
 }

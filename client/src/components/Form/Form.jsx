@@ -12,7 +12,7 @@ function validate(input) {
   if (!input.title) {
     errors.title = "Title is required";
   } else if (!/^[a-zA-Z ]+$/.test(input.title)) {
-    errors.title = "Title accept a words and spaces";
+    errors.title = "Title accept letters and spaces";
   } else if (!/^[\s\S]{3,25}$/.test(input.title)) {
     errors.title = "The title must contain between 3 and 25 characters";
   } else if (
@@ -24,11 +24,11 @@ function validate(input) {
   } else if (!input.summary) {
     errors.summary = "Summary or description is required";
   } else if (!/^[a-zA-Z0-9 ]+$/.test(input.summary)) {
-    errors.summary = "Title accept a words and spaces";
+    errors.summary = "Title accept letters and spaces";
   } else if (!/^[\s\S]{3,250}$/.test(input.summary)) {
     errors.summary = "The title must contain between 3 and 250 characters";
   } else if (!/^(?!$)(?:[0-9]{1,2}|100)$/gm.test(input.healthScore)) {
-    errors.healthScore = "The Health Score must be between 0 and 100";
+    errors.healthScore = "The Health Score must be between 1 and 100";
   }
   return errors;
 }
@@ -118,6 +118,7 @@ export default function Form() {
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
               <input
+                autoComplete='off'
                 type='text'
                 placeholder='Title' //--------------title INPUT
                 value={input.title}
@@ -129,6 +130,7 @@ export default function Form() {
 
             <div>
               <input
+                autoComplete='off'
                 type='url'
                 placeholder='Image LINK' //---------------image INPUT
                 value={input.image}
@@ -140,6 +142,7 @@ export default function Form() {
 
             <div>
               <input
+                autoComplete='off'
                 type='text'
                 placeholder='Summary' //-------------------summary INPUT
                 value={input.summary}
@@ -151,6 +154,7 @@ export default function Form() {
 
             <div>
               <input
+                autoComplete='off'
                 type='text'
                 placeholder='Healt Score'
                 value={input.healthScore}
@@ -161,6 +165,7 @@ export default function Form() {
             </div>
             <div>
               <input
+                autoComplete='off'
                 type='text'
                 placeholder='Steps'
                 value={input.analyzedInstructions}

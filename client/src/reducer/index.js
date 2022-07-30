@@ -7,6 +7,7 @@ import {
   POST_RECIPE,
   GET_DIETS,
   GET_DETAILS,
+  RESET_DETAIL,
 } from "../actions";
 
 const initialState = {
@@ -115,6 +116,12 @@ function rootReducer(state = initialState, action) {
       };
 
     case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload,
+      };
+
+    case RESET_DETAIL:
       return {
         ...state,
         detail: action.payload,

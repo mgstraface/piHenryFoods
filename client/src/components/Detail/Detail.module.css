@@ -2,6 +2,26 @@ h1 {
   color: aliceblue;
 }
 
+.titleDetail {
+  margin-top: -30px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+}
+.titleIMG {
+  margin-top: 5%;
+}
+
+.imagesDetail {
+  display: flex;
+  justify-content: center;
+}
+.logoDetailIzq {
+  margin-top: 0%;
+  margin-left: -18%;
+  position: fixed;
+  z-index: 1;
+}
+
 .imgDetail {
   text-align: center;
   border-radius: 10px;
@@ -9,6 +29,8 @@ h1 {
   width: 348px;
   -webkit-box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
   box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  margin-right: -50%;
+  margin-top: 5%;
 }
 
 .container {
@@ -23,7 +45,15 @@ h1 {
 }
 .summary {
   color: antiquewhite;
-  margin: 0px 15px;
+  margin: 40px 15px;
+  width: 348px;
+  height: 250px;
+  margin-top: -30%;
+  margin-left: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
 }
 .btnDetail {
   background-color: rgba(0, 0, 0, 0.514);
@@ -60,13 +90,76 @@ h2 {
 h3 {
   color: aliceblue;
 }
+.contHDDtot {
+  display: flex;
+  margin-top: -5%;
+}
+.containerHDD {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  margin-left: 7%;
+}
+
 .healthScore {
-  background-color: rgba(0, 0, 0, 0.509);
+  background-color: rgba(171, 170, 170, 0.302);
   height: 120px;
   width: 150px;
   border-radius: 10px;
   display: flex;
-  align-items: center;
+  text-align: center;
   justify-content: center;
   flex-direction: column;
+  -webkit-box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  margin-bottom: 20%;
+}
+
+.dietTypes {
+  color: aliceblue;
+  background-color: rgba(171, 170, 170, 0.302);
+  height: 270px;
+  width: 150px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  -webkit-box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  font-size: 12px;
+  margin-left: 4%;
+  margin-top: 11%;
+}
+
+.dishTypes {
+  color: aliceblue;
+  background-color: rgba(171, 170, 170, 0.302);
+  height: 120px;
+  width: 150px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  -webkit-box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  box-shadow: 15px 13px 9px 11px rgba(0, 0, 0, 0.74);
+  font-size: 12px;
+}
+.steps {
+  color: antiquewhite;
+  font-size: 12px;
+  width: 348px;
+  margin-top: 8%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+}
+.bgImage {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }

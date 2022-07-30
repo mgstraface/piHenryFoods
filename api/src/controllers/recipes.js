@@ -84,6 +84,7 @@ function getRecipeById(req, res, next) {
       .get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`)
       .then((response) => {
         return res.json({
+          vegetarian: response.data.vegetarian,
           title: response.data.title,
           image: response.data.image,
           dishTypes: response.data.dishTypes,
