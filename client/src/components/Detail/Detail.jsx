@@ -6,12 +6,15 @@ import { useEffect } from "react";
 import styles from "./Detail.module.css";
 import imgBtn from "../../images/btnGoHome.png";
 import logo from "../../images/LogoHF.png";
+import Loading from "../../images/loading.gif";
+import { useState } from "react";
 
 export default function Detail(props) {
   const dispatch = useDispatch();
   const recipe = useSelector((state) => state.detail);
   console.log(recipe);
   const dishTypes = recipe.dishTypes && recipe.dishTypes.join(" - ");
+  const [loading, setLoading] = useState(true);
 
   const getDiets = function () {
     const arrDiets = []; //defino un array para pushear las dietas de la api y la db
@@ -40,10 +43,13 @@ export default function Detail(props) {
 
   useEffect(() => {
     dispatch(getDetails(props.match.params.id));
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     return () => {
       dispatch(resetDetail({}));
     };
-  }, [dispatch]);
+  }, [dispatch, props.match.params.id]);
 
   return (
     <div className={styles.container}>
@@ -56,7 +62,11 @@ export default function Detail(props) {
           height='250px'
         />
       </div>
-      {recipe.title ? (
+      {loading ? (
+        <div>
+          <img className={styles.Loading} src={Loading} alt='Loading' />
+        </div>
+      ) : recipe.title ? (
         <div className={styles.titleIMG}>
           <h1>
             <u>{recipe.title}</u>

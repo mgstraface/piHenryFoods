@@ -19,12 +19,10 @@
   border-radius: 20px;
 }
 
-.paginado li button:active {
-  background-color: #bd0e28;
-  color: #ffffff;
-}
-
 .paginado li button:hover {
   background-color: #333333;
-  color: #ffffff;
+  color: antiquewhite;
+}
+.bPag {
+  font-size: 13px;
 }

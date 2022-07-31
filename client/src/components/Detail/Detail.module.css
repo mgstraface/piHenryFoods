@@ -163,3 +163,15 @@ h3 {
   justify-content: space-between;
   flex-direction: row;
 }
+.Loading {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  transition: 2s;
+  margin-left: 26%;
+  margin-top: 18%;
+  height: 100px;
+  width: 100px;
+}

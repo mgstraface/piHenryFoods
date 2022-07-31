@@ -98,6 +98,8 @@ function getRecipeById(req, res, next) {
   }
 }
 
+function getRecipesDb(req, res, next)
+
 module.exports = {
   getRecipes,
   createRecipe,

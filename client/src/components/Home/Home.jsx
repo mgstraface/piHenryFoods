@@ -7,10 +7,11 @@ import Paginado from "../Paginado/Paginado";
 import styles from "./Home.module.css";
 import NavBar from "../NavBar/NavBar";
 import SearchBar from "../SearchBar/SearchBar";
+import Loading from "../../images/loading.gif";
 
 export default function Home() {
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(true);
   //----------------------------------------------PAGINADO---------------------------------------------------------------
 
   const allRecipes = useSelector((state) => state.recipes);
@@ -29,6 +30,9 @@ export default function Home() {
   useEffect(() => {
     //despacho la funcion que trae las dietas, con el array vacio indico que solo lo haga la 1ra vez que se renderiza el componente
     dispatch(getRecipes());
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, []);
 
   //--------------------------------------------HANDLERS----------------------------------------------------------//
@@ -111,23 +115,30 @@ export default function Home() {
             currentPage={currentPage}
           />
         </div>
-
-        {/* por cada receta en current, retorno una card, pasandole los parametros correspondientes */}
-        <div className={styles.container}>
-          {currentRecipes &&
-            currentRecipes.map((el) => {
-              return (
-                <Card
-                  key={el.id}
-                  id={el.id}
-                  title={el.title}
-                  image={el.image}
-                  diets={el.diets}
-                  vegetarian={el.vegetarian}
-                ></Card>
-              );
-            })}
-        </div>
+        {loading ? (
+          <div>
+            <img className={styles.Loading} src={Loading} alt='Loading' />
+          </div>
+        ) : currentRecipes ? (
+          <div className={styles.container}>
+            {currentRecipes &&
+              currentRecipes.map((el) => {
+                return (
+                  <Card
+                    key={el.id}
+                    id={el.id}
+                    title={el.title}
+                    image={el.image}
+                    diets={el.diets}
+                    vegetarian={el.vegetarian}
+                    healthScore={el.healthScore}
+                  ></Card>
+                );
+              })}
+          </div>
+        ) : (
+          <p>Data no encontrada</p>
+        )}
         <div className={styles.paginado}>
           <Paginado
             key={currentPage}

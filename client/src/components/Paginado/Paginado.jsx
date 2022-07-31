@@ -22,7 +22,13 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado, current
               // lista
               <li key={number}>
                 <button onClick={() => paginado(number)}>
-                  {currentPage === number ? <b>X</b> : number}
+                  {currentPage === number ? (
+                    <u>
+                      <b className={styles.bPag}> {number}</b>
+                    </u>
+                  ) : (
+                    number
+                  )}
                 </button>
               </li>
             );

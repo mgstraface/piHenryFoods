@@ -81,3 +81,11 @@ button:hover {
   margin-left: 1190px;
   margin-top: -170px;
 }
+.Loading {
+  position: fixed;
+  z-index: 2;
+  transition: 2s;
+  margin-left: -3.5%;
+  height: 100px;
+  width: 100px;
+}
