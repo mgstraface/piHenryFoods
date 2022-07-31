@@ -8,6 +8,7 @@ import {
   GET_DIETS,
   GET_DETAILS,
   RESET_DETAIL,
+  GET_BY_DB,
 } from "../actions";
 
 const initialState = {
@@ -23,11 +24,28 @@ function rootReducer(state = initialState, action) {
     case GET_RECIPES:
       return {
         ...state,
-        recipes: action.payload, //lleno los 2 arrays con todas las dietas que traigo de la API
-        allRecipes: action.payload,
+        recipes: action.payload,
+      };
+    case GET_RECIPES_BY_NAME:
+      return {
+        ...state,
+        recipes: action.payload,
       };
 
-    case FILTER_BY_DIET: //filtro una copia del array allRecipes y busco las que coincidan con el payload
+    case GET_DIETS:
+      return {
+        ...state,
+        diets: action.payload,
+      };
+
+    case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload,
+      };
+    //-------------------------------------------FILTRADOS Y ORDENAMIENTOS----------------------------------------------------
+
+    case FILTER_BY_DIET:
       const allRecipes = state.allRecipes;
       const allRecipesA = state.allRecipes.filter((e) => !e.vegetarian);
       const allRecipesB = state.allRecipes.filter((e) => e.vegetarian);
@@ -46,7 +64,7 @@ function rootReducer(state = initialState, action) {
         recipes: dietFiltered,
       };
 
-    case ORDER_BY_TITLE: //analizo el title de c/el y los ordeno segun corresponda en un array nuevo
+    case ORDER_BY_TITLE:
       let sortArray =
         action.payload === "asc"
           ? state.recipes.sort((a, b) => {
@@ -72,7 +90,7 @@ function rootReducer(state = initialState, action) {
         recipes: sortArray,
       };
 
-    case ORDER_BY_HEALTHSCORE: //analizo el title de c/el y los ordeno segun corresponda en un array nuevo
+    case ORDER_BY_HEALTHSCORE:
       let sortedArray =
         action.payload === "ascScore"
           ? state.recipes.sort((a, b) => {
@@ -98,29 +116,12 @@ function rootReducer(state = initialState, action) {
         recipes: sortedArray,
       };
 
-    case GET_RECIPES_BY_NAME:
+    case GET_BY_DB:
       return {
         ...state,
         recipes: action.payload,
       };
-
-    case GET_DIETS:
-      return {
-        ...state,
-        diets: action.payload,
-      };
-
-    case POST_RECIPE:
-      return {
-        ...state,
-      };
-
-    case GET_DETAILS:
-      return {
-        ...state,
-        detail: action.payload,
-      };
-
+    //------------------------------------------------RESET DETAIL-------------------------------------------
     case RESET_DETAIL:
       return {
         ...state,

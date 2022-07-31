@@ -1,7 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes, filterRecipeByDiet, orderByTitle, orderByHealthScore } from "../../actions";
+import {
+  getRecipes,
+  filterRecipeByDiet,
+  orderByTitle,
+  orderByHealthScore,
+  getByDb,
+} from "../../actions";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import styles from "./Home.module.css";
@@ -41,6 +47,10 @@ export default function Home() {
     // tomo el value del select y lo mando como payload a la action
     dispatch(filterRecipeByDiet(e.target.value));
     setCurrentPage(1);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }
 
   function handleOrderByTitle(e) {
@@ -56,6 +66,17 @@ export default function Home() {
     setCurrentPage(1);
     setOrdered(`Ordered ${e.target.value}`);
   }
+
+  function handleFilterCreate(e) {
+    e.preventDefault();
+    dispatch(getByDb(e.target.value));
+    setCurrentPage(1);
+    setOrdered(`Ordered ${e.target.value}`);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }
   // ----------------------------------------------HOME------------------------------------------------------------//
   return (
     <div>
@@ -64,6 +85,14 @@ export default function Home() {
       </div>
       <div className={styles.cont}>
         <div className={styles.btnCont}>
+          <select className={styles.selecHome} onChange={(e) => handleFilterCreate(e)}>
+            <option value='' hidden>
+              Filter by create
+            </option>
+            <option value='created'>Created</option>
+            <option value='API'>API</option>
+          </select>
+
           <select className={styles.selecHome} onChange={(e) => handleOrderByTitle(e)}>
             <option value='' hidden>
               Order by title

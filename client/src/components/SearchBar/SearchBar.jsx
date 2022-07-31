@@ -3,10 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipesByName } from "../../actions";
 import styles from "./SearchBar.module.css";
+import Loading from "../../images/loading.gif";
 
 export default function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -18,10 +20,19 @@ export default function SearchBar({ setCurrentPage }) {
     dispatch(getRecipesByName(name));
     setName("");
     setCurrentPage(1);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }
 
   return (
     <div className={styles.SearchBar}>
+      {loading && (
+        <div>
+          <img className={styles.Loading} src={Loading} alt='Loading' />
+        </div>
+      )}
       <input
         value={name}
         type='text'

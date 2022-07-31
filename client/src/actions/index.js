@@ -12,6 +12,7 @@ export const GET_DIETS = "GET_DIETS";
 export const POST_RECIPE = "POST_RECIPE";
 export const GET_DETAILS = "GET_DETAILS";
 export const RESET_DETAIL = "RESET_DETAILS";
+export const GET_BY_DB = "GET_BY_DB";
 //--------------------------------------------ACTIONS-----------------------------------------------------
 
 export function getRecipes() {
@@ -63,10 +64,22 @@ export function getDiets() {
   };
 }
 
+//-----------------------------------------------------POST----------------------------------------------------------
+
 export function postRecipe(payload) {
   return async function (dispatch) {
     const json = await axios.post("http://localhost:3001/recipe", payload);
     return json;
+  };
+}
+//-----------------------------------------FILTRADOS Y ORDENAMIENTOS------------------------------------------------------
+export function getByDb(type) {
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/recipesdb?type=" + type);
+    return dispatch({
+      type: GET_BY_DB,
+      payload: json.data,
+    });
   };
 }
 
@@ -93,7 +106,7 @@ export function orderByHealthScore(payload) {
     payload,
   };
 }
-
+//-------------------------------------------RESET DETAIL-------------------------------------------------------
 export function resetDetail(payload) {
   return {
     type: RESET_DETAIL,
