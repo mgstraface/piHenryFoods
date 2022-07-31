@@ -6,6 +6,6 @@ const { getRecipes, createRecipe, getRecipeById, getRecipesDb } = require("../co
 router.get("/recipes", getRecipes);
 router.get("/recipes/:idReceta", getRecipeById);
 router.post("/recipe", createRecipe);
-router.get("/recipesDb", this.getRecipesDb);
+router.get("/recipesdb", getRecipesDb);
 
 module.exports = router;

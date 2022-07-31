@@ -98,10 +98,33 @@ function getRecipeById(req, res, next) {
   }
 }
 
-function getRecipesDb(req, res, next)
+function getRecipesDb(req, res, next) {
+  apiRecipes = [];
+  const queryType = req.query.type;
+  if (queryType === "created") {
+    Recipe.findAll({ incude: Diets })
+      .then((response) => {
+        return res.json(response);
+      })
+      .catch(() => {
+        res.status(400).send("Not recipes in db");
+      });
+  } else {
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`
+      )
+      .then((apiResponse) => {
+        apiRecipes = apiResponse.data.results;
+        return res.status(200).json(apiRecipes);
+      })
+      .catch((error) => next(error));
+  }
+}
 
 module.exports = {
   getRecipes,
   createRecipe,
   getRecipeById,
+  getRecipesDb,
 };

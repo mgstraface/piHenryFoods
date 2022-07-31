@@ -74,7 +74,11 @@ export default function Detail(props) {
           <div className={styles.imagesDetail}>
             <img
               className={styles.imgDetail}
-              src={recipe.image}
+              src={
+                recipe.image
+                  ? recipe.img
+                  : "https://caminhoslanguages.com/wp-content/uploads/2020/04/traditional-brazilian-foods-1.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1"
+              }
               alt='img not found'
               width='250px'
               height='250px'

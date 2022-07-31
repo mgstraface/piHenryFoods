@@ -21,7 +21,7 @@ export default function Card({ id, title, image, diets, vegetarian }) {
   };
   if (!image) {
     image =
-      "https://img.freepik.com/premium-vector/fast-food-cartoon-color-illustration_7243-196.jpg?w=740";
+      "https://caminhoslanguages.com/wp-content/uploads/2020/04/traditional-brazilian-foods-1.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1";
   }
   const finalDiets = getDiets();
 

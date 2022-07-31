@@ -15,13 +15,16 @@ function validate(input) {
     errors.title = "Title accept letters and spaces";
   } else if (!/^[\s\S]{3,25}$/.test(input.title)) {
     errors.title = "The title must contain between 3 and 25 characters";
-  } else if (
+  }
+  if (
+    input.image &&
     !/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/.test(
       input.image
     )
   ) {
     errors.image = "Enter a valid image URL. 'example: http://example.com'";
-  } else if (!input.summary) {
+  }
+  if (!input.summary) {
     errors.summary = "Summary or description is required";
   } else if (!/^[a-zA-Z0-9 ]+$/.test(input.summary)) {
     errors.summary = "Title accept letters and spaces";
