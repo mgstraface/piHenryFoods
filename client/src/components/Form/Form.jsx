@@ -26,11 +26,12 @@ function validate(input) {
   }
   if (!input.summary) {
     errors.summary = "Summary or description is required";
-  } else if (!/^[a-zA-Z0-9 ]+$/.test(input.summary)) {
+  } else if (!/^[a-zA-Z0-9 .!,]+$/.test(input.summary)) {
     errors.summary = "Title accept letters and spaces";
   } else if (!/^[\s\S]{3,250}$/.test(input.summary)) {
     errors.summary = "The title must contain between 3 and 250 characters";
-  } else if (!/^(?!$)(?:[0-9]{1,2}|100)$/gm.test(input.healthScore)) {
+  }
+  if (input.healthScore && !/^(?!$)(?:[0-9]{1,2}|100)$/gm.test(input.healthScore)) {
     errors.healthScore = "The Health Score must be between 1 and 100";
   }
   return errors;
@@ -52,6 +53,7 @@ export default function Form() {
     analyzedInstructions: "",
     diets: [],
   });
+  console.log(diets);
   //-------------------------------------------------HANDLERS-----------------------------------------------------
   function handleChange(e) {
     setInput({
@@ -118,7 +120,7 @@ export default function Form() {
         <img src={Logo} />
         <h1>Create your own recipe!</h1>
         <div className={styles.Form}>
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form>
             <div>
               <input
                 autoComplete='off'
@@ -188,14 +190,6 @@ export default function Form() {
               ))}
             </select>
             <div></div>
-            <div className={styles.buttonContainer}>
-              <button className={styles.buttonForm} type='submit'>
-                Create
-              </button>
-              <Link to='/home'>
-                <button className={styles.buttonForm}>to Home</button>
-              </Link>
-            </div>
           </form>
           <div className={styles.dietCONT}>
             {input.diets.map((e) => (
@@ -206,6 +200,16 @@ export default function Form() {
                 </button>
               </div>
             ))}
+          </div>
+          <div className={styles.dietsBtn}>
+            <div className={styles.buttonContainer}>
+              <button className={styles.buttonForm} type='submit' onClick={(e) => handleSubmit(e)}>
+                Create
+              </button>
+              <Link to='/home'>
+                <button className={styles.buttonForm}>to Home</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -2,10 +2,13 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 
-export default function Card({ id, title, image, diets, vegetarian }) {
+export default function Card({ id, title, image, diets, vegetarian, healthScore }) {
   const getDiets = function () {
     const arrDiets = []; //defino un array para pushear las dietas de la api y la db
 
+    if (!diets) {
+      arrDiets.push("Diet type not found");
+    }
     if (vegetarian === true) {
       arrDiets.push("vegetarian");
     }
@@ -13,9 +16,6 @@ export default function Card({ id, title, image, diets, vegetarian }) {
       for (const diet of diets) {
         typeof diet === "object" ? arrDiets.push(diet.name) : arrDiets.push(diet);
       }
-    }
-    if (!diets) {
-      arrDiets.push("Diet type not found");
     }
     return arrDiets;
   };
@@ -29,7 +29,7 @@ export default function Card({ id, title, image, diets, vegetarian }) {
 
   return (
     <div className={styles.card}>
-      <h3> {title} </h3>
+      <h3> {title.charAt(0).toUpperCase() + title.slice(1)} </h3>
       <Link to={`/detail/${id}`}>
         <img src={image} alt='img not found' width='150px' height='150px' />
       </Link>
@@ -40,6 +40,10 @@ export default function Card({ id, title, image, diets, vegetarian }) {
             return <li key={el}>{el.charAt(0).toUpperCase() + el.slice(1)}</li>;
           })}
         </ul>
+      </div>
+      <div className={styles.healthScore}>
+        Health Score
+        <h1>{healthScore}%</h1>
       </div>
     </div>
   );

@@ -25,23 +25,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipes: action.payload,
-      };
-    case GET_RECIPES_BY_NAME:
-      return {
-        ...state,
-        recipes: action.payload,
-      };
-
-    case GET_DIETS:
-      return {
-        ...state,
-        diets: action.payload,
-      };
-
-    case GET_DETAILS:
-      return {
-        ...state,
-        detail: action.payload,
+        allRecipes: action.payload,
       };
     //-------------------------------------------FILTRADOS Y ORDENAMIENTOS----------------------------------------------------
 
@@ -64,7 +48,7 @@ function rootReducer(state = initialState, action) {
         recipes: dietFiltered,
       };
 
-    case ORDER_BY_TITLE:
+    case ORDER_BY_TITLE: //analizo el title de c/el y los ordeno segun corresponda en un array nuevo
       let sortArray =
         action.payload === "asc"
           ? state.recipes.sort((a, b) => {
@@ -88,6 +72,23 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipes: sortArray,
+      };
+    case GET_RECIPES_BY_NAME:
+      return {
+        ...state,
+        recipes: action.payload,
+      };
+
+    case GET_DIETS:
+      return {
+        ...state,
+        diets: action.payload,
+      };
+
+    case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload,
       };
 
     case ORDER_BY_HEALTHSCORE:
@@ -121,7 +122,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         recipes: action.payload,
       };
-    //------------------------------------------------RESET DETAIL-------------------------------------------
+
     case RESET_DETAIL:
       return {
         ...state,

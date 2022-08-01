@@ -27,10 +27,8 @@ export default function Home() {
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage; // indice de la primera receta
   const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe); // recetas que se muestran en la pag
   const [ordered, setOrdered] = useState(""); //defino estado local para que renderice la pagina con los filtros
-
   const paginado = (pageNumber) => {
-    //se define la variable con su numero de pagina, y este num de pagina
-    setCurrentPage(pageNumber); //modifica el estado de la pagina actual
+    setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
@@ -47,6 +45,7 @@ export default function Home() {
     // tomo el value del select y lo mando como payload a la action
     dispatch(filterRecipeByDiet(e.target.value));
     setCurrentPage(1);
+    setOrdered(`Ordered ${e.target.value}`);
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -166,7 +165,7 @@ export default function Home() {
               })}
           </div>
         ) : (
-          <p>Data no encontrada</p>
+          <p className={styles.dataNF}> Data no encontrada</p>
         )}
         <div className={styles.paginado}>
           <Paginado

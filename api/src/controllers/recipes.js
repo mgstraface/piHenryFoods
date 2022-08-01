@@ -45,6 +45,29 @@ function getRecipes(req, res, next) {
   }
 }
 
+function getRecipesDb(req, res, next) {
+  apiRecipes = [];
+  const queryType = req.query.type;
+  if (queryType === "created") {
+    Recipe.findAll({ include: [Diets] })
+      .then((dbResponse) => {
+        return res.status(200).json(dbResponse);
+      })
+      .catch((error) => {
+        res.status(400).send(error);
+      });
+  } else {
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`
+      )
+      .then((apiResponse) => {
+        apiRecipes = apiResponse.data.results;
+        return res.status(200).json(apiRecipes);
+      })
+      .catch((error) => next(error));
+  }
+}
 async function createRecipe(req, res) {
   const { title, summary, healthScore, analyzedInstructions, diets, image } = req.body;
   if (!title || !summary || !diets) return res.status(404).send("MISSING TITLE, DIETS OR SUMMARY");
@@ -93,30 +116,6 @@ function getRecipeById(req, res, next) {
           healthScore: response.data.healthScore,
           analyzedInstructions: response.data.analyzedInstructions,
         });
-      })
-      .catch((error) => next(error));
-  }
-}
-
-function getRecipesDb(req, res, next) {
-  apiRecipes = [];
-  const queryType = req.query.type;
-  if (queryType === "created") {
-    Recipe.findAll({ incude: Diets })
-      .then((response) => {
-        return res.json(response);
-      })
-      .catch(() => {
-        res.status(400).send("Not recipes in db");
-      });
-  } else {
-    axios
-      .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`
-      )
-      .then((apiResponse) => {
-        apiRecipes = apiResponse.data.results;
-        return res.status(200).json(apiRecipes);
       })
       .catch((error) => next(error));
   }

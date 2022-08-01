@@ -16,6 +16,7 @@ export const GET_BY_DB = "GET_BY_DB";
 //--------------------------------------------ACTIONS-----------------------------------------------------
 
 export function getRecipes() {
+  //en esta primera action, conecto mi BACK con el FRONT, mediante una acción asincrona a mi ruta /recipes.
   return (dispatch) => {
     axios.get("http://localhost:3001/recipes").then((response) => {
       dispatch({
@@ -74,11 +75,15 @@ export function postRecipe(payload) {
 //-----------------------------------------FILTRADOS Y ORDENAMIENTOS------------------------------------------------------
 export function getByDb(type) {
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/recipesdb?type=" + type);
-    return dispatch({
-      type: GET_BY_DB,
-      payload: json.data,
-    });
+    try {
+      const json = await axios.get("http://localhost:3001/recipesdb?type=" + type);
+      return dispatch({
+        type: GET_BY_DB,
+        payload: json.data,
+      });
+    } catch (error) {
+      throw alert(error);
+    }
   };
 }
 
@@ -90,6 +95,7 @@ export function filterRecipeByDiet(payload) {
 }
 
 export function orderByTitle(payload) {
+  //el PAYLOAD es el que recibo del SELECT de HOME
   return {
     type: ORDER_BY_TITLE,
     payload,
@@ -97,6 +103,7 @@ export function orderByTitle(payload) {
 }
 
 export function orderByHealthScore(payload) {
+  //el PAYLOAD es el que recibo del SELECT de HOME
   return {
     type: ORDER_BY_HEALTHSCORE,
     payload,
