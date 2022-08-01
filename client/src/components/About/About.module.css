@@ -1,0 +1,43 @@
+.about {
+  background-image: url("../../images/bgAbout.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  background-position-x: center;
+}
+
+.btnAbout {
+  margin-top: 45%;
+  opacity: 75%;
+  color: antiquewhite;
+  background: rgb(35 59 23);
+  border-radius: 15px;
+  font-style: italic;
+  font-size: 14px;
+  padding: 7px 16px 7px 16px;
+  transition: all 1.5s;
+}
+
+.btnAbout:hover {
+  box-shadow: inset 155px 0 0 0 #ffffff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  opacity: 75%;
+}
+.Loading {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  transition: 2s;
+  margin-left: 45%;
+  margin-top: 18%;
+  height: 100px;
+  width: 100px;
+}

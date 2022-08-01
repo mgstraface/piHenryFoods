@@ -7,14 +7,14 @@
   align-items: center;
   justify-content: center;
 }
-
-input {
+.inputSb {
+  font-size: 14px;
   width: 180px;
   height: 20px;
 }
 
 .SearchBar ::placeholder {
-  font-size: 11px;
+  font-size: 14px;
 }
 .Loading {
   position: fixed;

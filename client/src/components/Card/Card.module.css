@@ -13,6 +13,7 @@
   margin-bottom: 20px;
   overflow: hidden;
   transition: 0.5s;
+  box-shadow: 20px;
 }
 
 .card img {
@@ -53,4 +54,16 @@
 .card:hover {
   -webkit-transform: scale(0.5);
   transform: scale(0.9);
+}
+
+.healthScore {
+  height: 75px;
+  width: 75px;
+  margin-top: -19%;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }

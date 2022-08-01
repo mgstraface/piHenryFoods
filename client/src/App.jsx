@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import Form from "./components/Form/Form";
 import Detail from "./components/Detail/Detail";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/home' component={Home} />
           <Route path='/recipe' component={Form} />
           <Route path='/detail/:id' component={Detail} />
+          <Route path='/about' component={About} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -26,15 +26,17 @@ export default function NavBar({ setCurrentPage }) {
       >
         <img className={styles.imgNav} src={refresh} />
       </button>
-      <img src={Logo} />
+
+      <img className={styles.logoNav} src={Logo} />
+      <Link to='/about'>
+        <button className={styles.btnAboutNav}>About</button>
+      </Link>
+
       <Link to='/recipe'>
         <button className={styles.btnNav}>
           <img className={styles.imgNav} src={create} />
         </button>
       </Link>
-      {/* <div className={styles.SearchBar}>
-        <SearchBar setCurrentPage={setCurrentPage} />
-      </div> */}
     </div>
   );
 }

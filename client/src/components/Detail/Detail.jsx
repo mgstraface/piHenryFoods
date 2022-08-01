@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetails, resetDetail } from "../../actions/index";
 import { useEffect } from "react";
 import styles from "./Detail.module.css";
-import imgBtn from "../../images/btnGoHome.png";
 import logo from "../../images/LogoHF.png";
 import Loading from "../../images/loading.gif";
 import { useState } from "react";
@@ -76,7 +75,7 @@ export default function Detail(props) {
               className={styles.imgDetail}
               src={
                 recipe.image
-                  ? recipe.img
+                  ? recipe.image
                   : "https://caminhoslanguages.com/wp-content/uploads/2020/04/traditional-brazilian-foods-1.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1"
               }
               alt='img not found'
@@ -132,9 +131,7 @@ export default function Detail(props) {
         </div>
       </div>
       <Link to='/home'>
-        <button className={styles.btnDetail}>
-          <img className={styles.imgBtnDetail} src={imgBtn} />
-        </button>
+        <button className={styles.btnDetail}>To home</button>
       </Link>
     </div>
   );

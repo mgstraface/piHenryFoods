@@ -34,6 +34,7 @@ export default function SearchBar({ setCurrentPage }) {
         </div>
       )}
       <input
+        className={styles.inputSb}
         value={name}
         type='text'
         placeholder='Search recipe by name'

@@ -45,3 +45,28 @@ img {
   height: 150px;
   object-fit: cover;
 }
+
+.btnAboutNav {
+  text-align: center;
+  margin-left: -980%;
+  margin-top: 195%;
+  opacity: 75%;
+  color: antiquewhite;
+  background: rgb(35 59 23);
+  border-radius: 15px;
+  font-style: italic;
+  font-size: 14px;
+  padding: 7px 16px 7px 16px;
+  transition: all 1.5s;
+}
+
+.btnAboutNav:hover {
+  box-shadow: inset 155px 0 0 0 #ffffff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  opacity: 75%;
+}
+
+.logoNav {
+  margin-left: 14%;
+}

@@ -56,27 +56,21 @@ h1 {
   text-align: start;
 }
 .btnDetail {
-  background-color: rgba(0, 0, 0, 0.514);
-  cursor: pointer;
-  text-align: center;
-  border-radius: 50px;
-  transition: 0.5s;
-  border: 1px solid black;
-  transition: 0.2s;
-  height: 190px;
-  width: 190px;
-  box-shadow: 2px;
-  -webkit-box-shadow: 5px 5px 15px 5px #000000;
-  box-shadow: 5px 5px 15px 5px #000000;
-}
-.imgBtnDetail {
-  height: 160px;
-  width: 170px;
-  object-fit: cover;
+  opacity: 75%;
+  color: antiquewhite;
+  background: rgb(35 59 23);
+  border-radius: 15px;
+  font-style: italic;
+  font-size: 14px;
+  padding: 7px 16px 7px 16px;
+  transition: all 1.5s;
 }
 
 .btnDetail:hover {
-  background-color: rgba(255, 255, 255, 0.13);
+  box-shadow: inset 155px 0 0 0 #ffffff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  opacity: 75%;
 }
 .btnDetail:active {
   background-color: rgb(61, 61, 61);

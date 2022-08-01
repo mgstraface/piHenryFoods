@@ -1,17 +1,17 @@
-.landing{
-    background-image: url('../../images/completa.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position:absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
-    background-position-x: center;
+.landing {
+  background-image: url("../../images/completa.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  background-position-x: center;
 }
 
-.btn{
+.btn {
   opacity: 75%;
   color: antiquewhite;
   background: rgb(35 59 23);
@@ -28,6 +28,6 @@
 .btn:hover {
   box-shadow: inset 155px 0 0 0 #ffffff;
   color: rgb(0, 0, 0);
-  cursor:pointer;
+  cursor: pointer;
   opacity: 75%;
 }
