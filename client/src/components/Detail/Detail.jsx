@@ -85,7 +85,7 @@ export default function Detail(props) {
           </div>
 
           <div className={styles.summary}>
-            <h2>{recipe.summary && <u>"Summary"</u>}</h2>
+            <h2>{recipe.summary && <u>Summary</u>}</h2>
             <p
               dangerouslySetInnerHTML={{
                 __html: recipe.summary,

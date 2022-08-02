@@ -26,7 +26,7 @@ function validate(input) {
   }
   if (!input.summary) {
     errors.summary = "Summary or description is required";
-  } else if (!/^[a-zA-Z0-9 .!,]+$/.test(input.summary)) {
+  } else if (input.summary && !/^[a-zA-Z0-9 .!,]+$/.test(input.summary)) {
     errors.summary = "Title accept letters and spaces";
   } else if (!/^[\s\S]{3,250}$/.test(input.summary)) {
     errors.summary = "The title must contain between 3 and 250 characters";
