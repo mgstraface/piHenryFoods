@@ -27,7 +27,7 @@ function validate(input) {
   if (!input.summary) {
     errors.summary = "Summary or description is required";
   } else if (input.summary && !/^[a-zA-Z0-9 .!,]+$/.test(input.summary)) {
-    errors.summary = "Title accept letters and spaces";
+    errors.summary = "Title accept letters, numbers and spaces";
   } else if (!/^[\s\S]{3,250}$/.test(input.summary)) {
     errors.summary = "The title must contain between 3 and 250 characters";
   }
@@ -53,7 +53,6 @@ export default function Form() {
     analyzedInstructions: "",
     diets: [],
   });
-  console.log(diets);
   //-------------------------------------------------HANDLERS-----------------------------------------------------
   function handleChange(e) {
     setInput({
@@ -125,7 +124,7 @@ export default function Form() {
               <input
                 autoComplete='off'
                 type='text'
-                placeholder='Title' //--------------title INPUT
+                placeholder='Title'
                 value={input.title}
                 name='title'
                 onChange={handleChange}
@@ -137,7 +136,7 @@ export default function Form() {
               <input
                 autoComplete='off'
                 type='url'
-                placeholder='Image LINK' //---------------image INPUT
+                placeholder='Image LINK'
                 value={input.image}
                 name='image'
                 onChange={handleChange}
@@ -149,7 +148,7 @@ export default function Form() {
               <input
                 autoComplete='off'
                 type='text'
-                placeholder='Summary' //-------------------summary INPUT
+                placeholder='Summary'
                 value={input.summary}
                 name='summary'
                 onChange={handleChange}

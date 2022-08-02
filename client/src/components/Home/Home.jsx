@@ -22,17 +22,16 @@ export default function Home() {
 
   const allRecipes = useSelector((state) => state.recipes);
   const [currentPage, setCurrentPage] = useState(1); // defino estado local para el paginado
-  const recipesPerPage = 9; // defino cantidad de recetas por pagina
-  const indexOfLastRecipe = currentPage * recipesPerPage; // indice de la ultima receta de la pagina
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage; // indice de la primera receta
-  const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe); // recetas que se muestran en la pag
-  const [ordered, setOrdered] = useState(""); //defino estado local para que renderice la pagina con los filtros
+  const recipesPerPage = 9;
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  const [ordered, setOrdered] = useState("");
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
-    //despacho la funcion que trae las dietas, con el array vacio indico que solo lo haga la 1ra vez que se renderiza el componente
     dispatch(getRecipes());
     setTimeout(() => {
       setLoading(false);
@@ -42,7 +41,7 @@ export default function Home() {
   //--------------------------------------------HANDLERS----------------------------------------------------------//
 
   function handleFilterDiet(e) {
-    // tomo el value del select y lo mando como payload a la action
+    e.preventDefault();
     dispatch(filterRecipeByDiet(e.target.value));
     setCurrentPage(1);
     setOrdered(`Ordered ${e.target.value}`);
@@ -80,7 +79,7 @@ export default function Home() {
   return (
     <div>
       <div className={styles.NavBar}>
-        <NavBar setCurrentPage={setCurrentPage} />
+        <NavBar />
       </div>
       <div className={styles.cont}>
         <div className={styles.btnCont}>

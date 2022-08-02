@@ -73,23 +73,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         recipes: sortArray,
       };
-    case GET_RECIPES_BY_NAME:
-      return {
-        ...state,
-        recipes: action.payload,
-      };
-
-    case GET_DIETS:
-      return {
-        ...state,
-        diets: action.payload,
-      };
-
-    case GET_DETAILS:
-      return {
-        ...state,
-        detail: action.payload,
-      };
 
     case ORDER_BY_HEALTHSCORE:
       let sortedArray =
@@ -121,6 +104,23 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipes: action.payload,
+      };
+    case GET_RECIPES_BY_NAME:
+      return {
+        ...state,
+        recipes: action.payload,
+      };
+
+    case GET_DIETS:
+      return {
+        ...state,
+        diets: action.payload,
+      };
+
+    case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload,
       };
 
     case RESET_DETAIL:

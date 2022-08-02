@@ -1,14 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
 import Logo from "../../images/LogoNav.png";
 import { getRecipes } from "../../actions";
 import styles from "../NavBar/NavBar.module.css";
 import refresh from "../../images/refresh.png";
 import create from "../../images/create.png";
 
-export default function NavBar({ setCurrentPage }) {
+export default function NavBar() {
   const dispatch = useDispatch();
 
   function handleClick(e) {
