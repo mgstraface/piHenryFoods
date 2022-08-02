@@ -24,9 +24,7 @@ function getRecipes(req, res, next) {
         });
         if (!apiRecipes.length && !dbRecipes.length)
           return res.status(404).send("recipe not found");
-        return res.status(200).json(
-          [...dbRecipes, ...apiRecipes] //.slice(0, 9);
-        );
+        return res.status(200).json([...dbRecipes, ...apiRecipes]);
       })
       .catch((error) => next(error));
   } else {
