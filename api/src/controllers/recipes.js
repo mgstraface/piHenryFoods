@@ -10,7 +10,7 @@ function getRecipes(req, res, next) {
   if (nameQuery) {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&name=${nameQuery}&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&addRecipeInformation=true&number=100`
       )
       .then((apiResponse) => {
         apiRecipes = apiResponse.data.results.filter((recipe) => {

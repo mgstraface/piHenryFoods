@@ -95,7 +95,6 @@ export function filterRecipeByDiet(payload) {
 }
 
 export function orderByTitle(payload) {
-  //el PAYLOAD es el que recibo del SELECT de HOME
   return {
     type: ORDER_BY_TITLE,
     payload,
@@ -103,7 +102,6 @@ export function orderByTitle(payload) {
 }
 
 export function orderByHealthScore(payload) {
-  //el PAYLOAD es el que recibo del SELECT de HOME
   return {
     type: ORDER_BY_HEALTHSCORE,
     payload,

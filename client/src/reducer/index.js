@@ -4,7 +4,6 @@ import {
   ORDER_BY_HEALTHSCORE,
   ORDER_BY_TITLE,
   GET_RECIPES_BY_NAME,
-  POST_RECIPE,
   GET_DIETS,
   GET_DETAILS,
   RESET_DETAIL,
@@ -12,7 +11,6 @@ import {
 } from "../actions";
 
 const initialState = {
-  //defino  el estado inicial (coloco 2 arrays de recetas para que uno siempre tenga TODAS las recetas)
   recipes: [],
   allRecipes: [],
   diets: [],
@@ -48,7 +46,7 @@ function rootReducer(state = initialState, action) {
         recipes: dietFiltered,
       };
 
-    case ORDER_BY_TITLE: //analizo el title de c/el y los ordeno segun corresponda en un array nuevo
+    case ORDER_BY_TITLE:
       let sortArray =
         action.payload === "asc"
           ? state.recipes.sort((a, b) => {

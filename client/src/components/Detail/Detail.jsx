@@ -11,7 +11,6 @@ import { useState } from "react";
 export default function Detail(props) {
   const dispatch = useDispatch();
   const recipe = useSelector((state) => state.detail);
-  console.log(recipe);
   const dishTypes = recipe.dishTypes && recipe.dishTypes.join(" - ");
   const [loading, setLoading] = useState(true);
 
@@ -68,7 +67,7 @@ export default function Detail(props) {
       ) : recipe.title ? (
         <div className={styles.titleIMG}>
           <h1>
-            <u>{recipe.title}</u>
+            <u>{recipe.title.charAt(0).toUpperCase() + recipe.title.slice(1)}</u>
           </h1>
           <div className={styles.imagesDetail}>
             <img
