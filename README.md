@@ -12,9 +12,7 @@
 
 
 **IMPORTANTE:** Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-=======
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
->>>>>>> a409cdf2080c6a4146090c4b07d851720bddcdfc
+
 
 Actualmente las versiónes necesarias son:
 
