@@ -1,70 +1,70 @@
 .card {
-  border: white solid 1px;
-  background-color: rgba(0, 0, 0, 0.652);
-  color: rgb(255, 255, 255);
-  border-radius: 5px;
-  display: flexbox;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 350px;
-  height: 370px;
-  position: relative;
-  margin-bottom: 20px;
-  overflow: hidden;
-  transition: 0.5s;
-  box-shadow: 20px;
+	border: white solid 1px;
+	background-color: rgb(4, 14, 2);
+	color: rgb(255, 255, 255);
+	border-radius: 5px;
+	display: flexbox;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 20%;
+	height: 370px;
+	position: relative;
+	margin-bottom: 20px;
+	overflow: hidden;
+	transition: 0.5s;
+	box-shadow: 20px;
 }
 
 .card img {
-  text-align: center;
-  border-radius: 10px;
-  object-fit: cover;
-  width: 348px;
+	text-align: center;
+	border-radius: 10px;
+	object-fit: cover;
+	width: 348px;
 }
 
 .card ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  flex-wrap: wrap;
-  height: 100px;
-  margin-right: 40px;
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+	height: 100px;
+	margin-right: 40px;
 }
 
 .card div h3 {
-  background-color: antiquewhite;
-  color: black;
-  text-align: center;
+	background-color: antiquewhite;
+	color: black;
+	text-align: center;
 }
 
 .card h3 {
-  background-color: antiquewhite;
-  opacity: 50%;
-  color: black;
-  text-align: center;
+	background-color: antiquewhite;
+	opacity: 50%;
+	color: black;
+	text-align: center;
 }
 .card div {
-  margin-right: 0;
-  margin-left: 0;
-  text-align: center;
+	margin-right: 0;
+	margin-left: 0;
+	text-align: center;
 }
 
 .card:hover {
-  -webkit-transform: scale(0.5);
-  transform: scale(0.9);
+	-webkit-transform: scale(0.5);
+	transform: scale(0.9);
 }
 
 .healthScore {
-  height: 75px;
-  width: 75px;
-  margin-top: -19%;
-  border: 1px solid white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  position: relative;
+	height: 75px;
+	width: 75px;
+	margin-top: -19%;
+	border: 1px solid white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	position: relative;
 }
