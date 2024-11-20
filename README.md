@@ -1,7 +1,6 @@
 <img src = "./web-developer-banner.jpg"/>
 
 # Individual Project - Henry Food
-
 ## Objetivos del Proyecto
 
 - Construir una App utlizando React, Redux, Node y Sequelize.
